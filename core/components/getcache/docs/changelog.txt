@@ -1,0 +1,5 @@
+Changelog for getCache.
+
+getPage 1.0.0-beta (October 21, 2010)
+====================================
+- Initial release
