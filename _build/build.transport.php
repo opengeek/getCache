@@ -4,7 +4,7 @@
  *
  * @package getcache
  * @subpackage build
- * @version 1.0.0-beta
+ * @version 1.0.0-pl
  * @author Jason Coward <jason@modx.com>
  */
 $mtime = microtime();
@@ -26,7 +26,7 @@ unset($root);
 /* package defines */
 define('PKG_NAME','getCache');
 define('PKG_VERSION','1.0.0');
-define('PKG_RELEASE','beta');
+define('PKG_RELEASE','pl');
 define('PKG_LNAME',strtolower(PKG_NAME));
 
 // override with your own defines here (see build.config.sample.php)
@@ -73,6 +73,7 @@ unset($properties,$snippet,$vehicle);
 $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['source_core'] . '/docs/license.txt'),
     'readme' => file_get_contents($sources['source_core'] . '/docs/readme.txt'),
+    'changelog' => file_get_contents($sources['source_core'] . '/docs/changelog.txt'),
 ));
 
 /* zip up the package */
