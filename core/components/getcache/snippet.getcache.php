@@ -3,7 +3,7 @@
  * Cache the output of any MODx Element using a configurable cacheHandler
  *
  * @author Jason Coward <jason@modx.com>
- * @version 1.0.0-pl
+ * @version 1.0.1-dev
  * @since October 24, 2010
  * @package getcache
  */

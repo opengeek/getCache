@@ -4,7 +4,7 @@
  *
  * @package getcache
  * @subpackage build
- * @version 1.0.0-pl
+ * @version 1.0.1-dev
  * @author Jason Coward <jason@modx.com>
  */
 $mtime = microtime();
@@ -25,8 +25,8 @@ unset($root);
 
 /* package defines */
 define('PKG_NAME','getCache');
-define('PKG_VERSION','1.0.0');
-define('PKG_RELEASE','pl');
+define('PKG_VERSION','1.0.1');
+define('PKG_RELEASE','dev');
 define('PKG_LNAME',strtolower(PKG_NAME));
 
 // override with your own defines here (see build.config.sample.php)

@@ -1,7 +1,7 @@
 --------------------
 Snippet: getCache
 --------------------
-Version: 1.0.0-pl
+Version: 1.0.1-dev
 Since: October 21, 2010
 Author: Jason Coward <jason@modx.com>
 
