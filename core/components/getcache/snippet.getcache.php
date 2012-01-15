@@ -24,7 +24,7 @@ unset($properties['filter_modifiers']);
 if (empty($cacheKey)) $cacheKey = $modx->getOption('cache_resource_key', null, 'resource');
 if (empty($cacheHandler)) $cacheHandler = $modx->getOption('cache_resource_handler', null, $modx->getOption(xPDO::OPT_CACHE_HANDLER, null, 'xPDOFileCache'));
 if (!isset($cacheExpires)) $cacheExpires = (integer) $modx->getOption('cache_resource_expires', null, $modx->getOption(xPDO::OPT_CACHE_EXPIRES, null, 0));
-if (empty($cacheElementKey)) $cacheElementKey = $modx->resource->getCacheKey() . '/' . md5($modx->toJSON($properties) . implode('', $modx->request->getParameters()));
+if (empty($cacheElementKey)) $cacheElementKey = $modx->resource->getCacheKey() . '/' . md5($modx->toJSON($properties) . $modx->toJSON($modx->request->getParameters()));
 $cacheOptions = array(
     xPDO::OPT_CACHE_KEY => $cacheKey,
     xPDO::OPT_CACHE_HANDLER => $cacheHandler,

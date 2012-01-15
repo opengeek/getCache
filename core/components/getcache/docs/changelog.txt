@@ -1,5 +1,7 @@
 Changelog for getCache.
 
+- Respect multi-dimensional arrays in request parameters for cacheKey
+
 getPage 1.0.0-pl (March 27, 2011)
 ====================================
 - Change default cacheKey property to use 'resource' (for MODX 2.1+)
