@@ -1,5 +1,6 @@
 Changelog for getCache.
 
+- Add custom cache partition refresh processor
 - Respect multi-dimensional arrays in request parameters for cacheKey
 
 getPage 1.0.0-pl (March 27, 2011)
