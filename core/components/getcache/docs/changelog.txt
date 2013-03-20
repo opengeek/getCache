@@ -1,12 +1,14 @@
 Changelog for getCache.
 
+getCache 1.1.0-pl (March 20, 2013)
+====================================
 - Add custom cache partition refresh processor
 - Respect multi-dimensional arrays in request parameters for cacheKey
 
-getPage 1.0.0-pl (March 27, 2011)
+getCache 1.0.0-pl (March 27, 2011)
 ====================================
 - Change default cacheKey property to use 'resource' (for MODX 2.1+)
 
-getPage 1.0.0-beta (October 21, 2010)
+getCache 1.0.0-beta (October 21, 2010)
 ====================================
 - Initial release
