@@ -4,28 +4,24 @@
  *
  * @package getcache
  * @subpackage build
- * @version 1.0.0-pl
  * @author Jason Coward <jason@modx.com>
  */
-$mtime = microtime();
-$mtime = explode(" ", $mtime);
-$mtime = $mtime[1] + $mtime[0];
-$tstart = $mtime;
+$tstart = microtime(true);
 set_time_limit(0);
 
 $root = dirname(dirname(__FILE__)) . '/';
 $sources= array (
     'root' => $root,
     'build' => $root . '_build/',
-    'lexicon' => $root . '_build/lexicon/',
     'properties' => $root . '_build/properties/',
+    'assets_core' => $root . 'assets/components/getcache',
     'source_core' => $root . 'core/components/getcache',
 );
 unset($root);
 
 /* package defines */
 define('PKG_NAME','getCache');
-define('PKG_VERSION','1.0.0');
+define('PKG_VERSION','1.1.0');
 define('PKG_RELEASE','pl');
 define('PKG_LNAME',strtolower(PKG_NAME));
 
@@ -41,7 +37,7 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
 $builder->createPackage(PKG_LNAME,PKG_VERSION,PKG_RELEASE);
-//$builder->registerNamespace(PKG_LNAME,false,true);
+$builder->registerNamespace(PKG_LNAME, false, true, '{core_path}components/' . PKG_LNAME . '/', '{assets_path}components/' . PKG_LNAME . '/');
 
 /* create snippet object */
 $snippet= $modx->newObject('modSnippet');
@@ -63,11 +59,12 @@ $vehicle->resolve('file',array(
     'source' => $sources['source_core'],
     'target' => "return MODX_CORE_PATH . 'components/';",
 ));
+$vehicle->resolve('file',array(
+    'source' => $sources['assets_core'],
+    'target' => "return MODX_ASSETS_PATH . 'components/';",
+));
 $builder->putVehicle($vehicle);
 unset($properties,$snippet,$vehicle);
-
-/* load lexicon strings */
-//$builder->buildLexicon($sources['lexicon']);
 
 /* now pack in the license file, readme and setup options */
 $builder->setPackageAttributes(array(
@@ -79,10 +76,7 @@ $builder->setPackageAttributes(array(
 /* zip up the package */
 $builder->pack();
 
-$mtime= microtime();
-$mtime= explode(" ", $mtime);
-$mtime= $mtime[1] + $mtime[0];
-$tend= $mtime;
+$tend= microtime(true);
 $totalTime= ($tend - $tstart);
 $totalTime= sprintf("%2.4f s", $totalTime);
 
