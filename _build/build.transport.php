@@ -37,7 +37,7 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
 $builder->createPackage(PKG_LNAME,PKG_VERSION,PKG_RELEASE);
-$builder->registerNamespace(PKG_LNAME,false,true);
+$builder->registerNamespace(PKG_LNAME, false, true, '{core_path}components/' . PKG_LNAME . '/', '{assets_path}components/' . PKG_LNAME . '/');
 
 /* create snippet object */
 $snippet= $modx->newObject('modSnippet');
