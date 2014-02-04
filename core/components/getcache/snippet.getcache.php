@@ -25,13 +25,14 @@ if (empty($cacheKey)) $cacheKey = $modx->getOption('cache_resource_key', null, '
 if (empty($cacheHandler)) $cacheHandler = $modx->getOption('cache_resource_handler', null, $modx->getOption(xPDO::OPT_CACHE_HANDLER, null, 'xPDOFileCache'));
 if (!isset($cacheExpires)) $cacheExpires = (integer) $modx->getOption('cache_resource_expires', null, $modx->getOption(xPDO::OPT_CACHE_EXPIRES, null, 0));
 if (empty($cacheElementKey)) $cacheElementKey = $modx->resource->getCacheKey() . '/' . md5($modx->toJSON($properties) . $modx->toJSON($modx->request->getParameters()));
+$cacheReset = $modx->getOption('cacheReset', $scriptProperties, false);
 $cacheOptions = array(
     xPDO::OPT_CACHE_KEY => $cacheKey,
     xPDO::OPT_CACHE_HANDLER => $cacheHandler,
     xPDO::OPT_CACHE_EXPIRES => $cacheExpires,
 );
 
-$cached = $modx->cacheManager->get($cacheElementKey, $cacheOptions);
+$cached = (!$cacheReset) ? $modx->cacheManager->get($cacheElementKey, $cacheOptions) : array();
 if (!isset($cached['properties']) || !isset($cached['output'])) {
     $elementObj = $modx->getObject($elementClass, array('name' => $element));
     if ($elementObj) {

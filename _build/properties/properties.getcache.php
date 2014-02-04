@@ -60,6 +60,13 @@ $properties = array(
         'options' => '',
         'value' => '',
     )
+    ,array(
+        'name' => 'cacheReset',
+        'desc' => 'If true the current cache of the element is deleted and created new.',
+        'type' => 'combo-boolean',
+        'options' => '',
+        'value' => false,
+    )
 );
 
 return $properties;
